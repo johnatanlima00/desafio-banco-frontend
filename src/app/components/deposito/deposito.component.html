@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-header">
+                Seu saldo total é de: {{this.saldoCliente | currency: 'BRL'}}
+              </div>
+        </div>
+    </div>
+    <div class="row form-deposito">
+        <div class="col-sm-12">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center">
+                    <div class="card-header">
+                    Digite o valor que deseja depositar
+                    </div>
+                    <div class="card-body">
+                    <form [formGroup]="formDeposito" (ngSubmit)="depositar()">
+                        <div class="form-group mb-2">
+                            <input type="text" class="form-control" id="staticDeposito" placeholder="R$ 00,00" name="valorDeposito" formControlName="valorDeposito"
+                            thousandSeparator="." mask="separator.2" separatorLimit="10000" decimalMarker="," prefix="R$ ">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Selecione a conta</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="contaDeposito" formControlName="contaDeposito">
+                              <option [value]="conta.id" *ngFor="let conta of this.contas">{{conta.id}} - {{conta.saldo | currency: 'BRL'}}</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2" [disabled]="this.formDeposito.invalid">Depositar</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row detalhe-item">
+        <div class="col-sm-4">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Meus dados</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Minhas Contas</a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                          Nome: {{this.cliente?.nome}}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Email: {{this.cliente?.email}}</li>
+                          <li class="list-group-item">CPF: {{this.cliente?.cpf}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="card-conta" style="width: 18rem;" *ngFor="let conta of this.cliente?.contas">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Número da conta: {{conta.id}}</li>
+                          <li class="list-group-item">Saldo: {{conta.saldo | currency: 'BRL'}}</li>
+                          <li class="list-group-item">Estado da Conta: {{conta.estado}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+            </div>
+        </div>
+    </div>
+</div>
